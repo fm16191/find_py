@@ -7,17 +7,18 @@ else:
     mot_cle = input("Mot à chercher ? : ")
 
 def dirl(path):
-    files = []
+    global files
     listdir = os.listdir(path)
     for item in listdir:
         if os.path.isdir(item):
             dirl(path + "/" + item)
         elif item.endswith(".py"):
             files.append(path + "/" + item)
-    return files
 
-py_mot = []
-files = dirl(".")
+
+files = list()
+py_mot = list()
+dirl(".")
 
 print("%d fichiers python ont été trouvés dans le répertoire courant" % len(files))
 # print(len(files))
